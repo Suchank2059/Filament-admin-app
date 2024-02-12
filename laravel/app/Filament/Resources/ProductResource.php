@@ -69,7 +69,7 @@ class ProductResource extends Resource
                                     ->label("SKU (Stock Keeping Unit)")
                                     ->unique()
                                     ->required(),
-                                TextINput::make('price')
+                                TextInput::make('price')
                                     ->required()
                                     ->numeric()
                                     ->rules(['regex:/^\d{1,6}(\.\d{0,2})?$/']),
