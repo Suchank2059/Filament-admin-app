@@ -37,6 +37,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
     // protected static ?string $navigationLabel = 'Test';
+    protected static ?int $navigationSort = 0;
 
     public static function form(Form $form): Form
     {
@@ -127,7 +128,7 @@ class ProductResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('brand_name')
+                TextColumn::make('brand.name')
                     ->searchable()
                     ->sortable(),
                 IconColumn::make('is_visible')
@@ -155,7 +156,11 @@ class ProductResource extends Resource
                     ->relationship('brand', 'name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
