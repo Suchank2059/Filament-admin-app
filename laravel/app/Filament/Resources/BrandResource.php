@@ -36,6 +36,11 @@ class BrandResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -46,7 +51,7 @@ class BrandResource extends Resource
                             TextInput::make('name')
                                 ->required()
                                 ->live()
-                                ->unique()
+                                ->unique(Brand::class, 'name', ignoreRecord: true)
                                 ->afterStateUpdated(function (string $operation, $state, Set $set) {
                                     if ($operation !== 'create') {
                                         return;
@@ -63,7 +68,7 @@ class BrandResource extends Resource
                             TextInput::make('url')
                                 ->label('Website url')
                                 ->required()
-                                ->unique()
+                                ->unique(Brand::class, 'url', ignoreRecord: true)
                                 ->columnSpan('full'),
 
                             MarkdownEditor::make('description')

@@ -39,6 +39,16 @@ class OrderResource extends Resource
 
     protected static ?string $activeNavigationIcon = 'heroicon-o-check-badge';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', OrderStatusEnum::PENDING->value)->count();
+    }
+
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return static::getModel()::where('status', OrderStatusEnum::PENDING->value)->count() > 10 ? 'warning' : 'primary';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -91,7 +101,7 @@ class OrderResource extends Resource
                                         ->required()
                                 ])->columns(3)
                         ]),
-                ]),
+                ])->columnSpanFull(),
             ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
@@ -33,6 +34,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->globalSearchKeyBindings(['ctrl+k', 'command+k'])
             // ->sidebarCollapsibleOnDesktop()
+            ->sidebarFullyCollapsibleOnDesktop()
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Setting')
+                    ->url('')
+                    ->icon('heroicon-o-cog-6-tooth'),
+
+                'logout' => MenuItem::make()->label('Log Out')
+            ])
+            // ->breadcrumbs(false)
             ->navigationItems([
                 NavigationItem::make('Blog')
                     ->url('https://blog.codewithdary.com', shouldOpenInNewTab: true)
