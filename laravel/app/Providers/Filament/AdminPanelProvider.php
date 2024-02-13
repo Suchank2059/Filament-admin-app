@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -31,6 +32,14 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => 'rgb(29, 78, 216)',
             ])
             ->globalSearchKeyBindings(['ctrl+k', 'command+k'])
+            // ->sidebarCollapsibleOnDesktop()
+            ->navigationItems([
+                NavigationItem::make('Blog')
+                    ->url('https://blog.codewithdary.com', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-pencil-square')
+                    ->group('External')
+                    ->sort(2)
+            ])
             ->font('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto+Slab:wght@300&display=swap')
             ->favicon('images/favicon.svg')
             // ->darkMode(false)

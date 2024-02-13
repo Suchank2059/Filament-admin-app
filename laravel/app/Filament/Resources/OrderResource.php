@@ -37,6 +37,8 @@ class OrderResource extends Resource
 
     // protected static int $globalSearchResultsLimit = 20;
 
+    protected static ?string $activeNavigationIcon = 'heroicon-o-check-badge';
+
     public static function form(Form $form): Form
     {
         return $form
