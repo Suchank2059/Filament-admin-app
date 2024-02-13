@@ -16,6 +16,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -68,9 +69,9 @@ class CategoryResource extends Resource
                                     ->label('Visibility')
                                     ->helperText('Enable or disable category visibility')
                                     ->default(true),
-                                
+
                                 Select::make('parent_id')
-                                ->relationship('parent' , 'name')
+                                    ->relationship('parent', 'name')
                             ])
                     ])
             ]);
@@ -88,6 +89,12 @@ class CategoryResource extends Resource
                     ->label('Parent')
                     ->searchable()
                     ->sortable(),
+
+                IconColumn::make('is_visible')
+                    ->label('Visibility')
+                    ->boolean()
+                    ->sortable()
+                    ->searchable(),
 
                 TextColumn::make('updated_at')
                     ->date()
