@@ -33,6 +33,10 @@ class OrderResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
+    // protected static ?string $recordTitleAttribute = 'number';
+
+    // protected static int $globalSearchResultsLimit = 20;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -40,7 +44,8 @@ class OrderResource extends Resource
                 Wizard::make([
                     Step::make('Order Details')
                         ->schema([
-                            TextInput::make('name')
+                            TextInput::make('number')
+                                ->label('Order Number')
                                 ->default('OR-' . random_int(100000, 999999))
                                 ->disabled()
                                 ->dehydrated(),

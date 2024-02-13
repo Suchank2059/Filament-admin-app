@@ -30,6 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => 'rgb(29, 78, 216)',
             ])
+            ->globalSearchKeyBindings(['ctrl+k', 'command+k'])
             ->font('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto+Slab:wght@300&display=swap')
             ->favicon('images/favicon.svg')
             // ->darkMode(false)
