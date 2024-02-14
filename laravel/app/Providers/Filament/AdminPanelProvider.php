@@ -45,11 +45,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             // ->breadcrumbs(false)
             ->navigationItems([
-                NavigationItem::make('Blog')
-                    ->url('https://blog.codewithdary.com', shouldOpenInNewTab: true)
-                    ->icon('heroicon-o-pencil-square')
-                    ->group('External')
-                    ->sort(2)
+                NavigationItem::make('Facebook')
+                    ->url('https://www.facebook.com/profile.php?id=100089595583143', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-user-circle')
+                    ->group('Find me in')
+                    ->sort(2),
+                NavigationItem::make('Linked In')
+                    ->url('https://www.linkedin.com/in/suchank-bhattarai-14b5742a4/', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-user-circle')
+                    ->group('Find me in')
+                    ->sort(3),
             ])
             ->font('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Roboto+Slab:wght@300&display=swap')
             ->favicon('images/favicon.svg')
